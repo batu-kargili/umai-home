@@ -1,0 +1,47 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#050505"/>
+  <rect x="40" y="40" width="1120" height="820" rx="36" fill="#0D0D0D" stroke="#242424" stroke-width="2"/>
+
+  <text x="80" y="160" fill="#8D8D8D" font-size="20" font-family="Arial, sans-serif" font-weight="700" letter-spacing="3">OPERATOR SURFACE</text>
+  <text x="80" y="220" fill="#FFFFFF" font-size="54" font-family="Arial, sans-serif" font-weight="700">One place for policies, events, and evidence</text>
+
+  <rect x="80" y="280" width="320" height="224" rx="30" fill="#111111" stroke="#262626" stroke-width="2"/>
+  <text x="114" y="332" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif" font-weight="700" letter-spacing="2">LIVE EVENTS</text>
+  <rect x="114" y="366" width="252" height="44" rx="18" fill="#FFFFFF"/>
+  <text x="140" y="394" fill="#050505" font-size="16" font-family="Arial, sans-serif" font-weight="700">BLOCK • prompt injection • prod-chatbot</text>
+  <rect x="114" y="426" width="252" height="44" rx="18" fill="#1A1A1A" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="142" y="454" fill="#FFFFFF" font-size="16" font-family="Arial, sans-serif" font-weight="700">WARN • sensitive output • internal-rag</text>
+
+  <rect x="438" y="280" width="316" height="224" rx="30" fill="#111111" stroke="#262626" stroke-width="2"/>
+  <text x="472" y="332" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif" font-weight="700" letter-spacing="2">VERSIONED GUARDRAILS</text>
+  <text x="472" y="390" fill="#FFFFFF" font-size="26" font-family="Arial, sans-serif" font-weight="700">Prod guardrail v18</text>
+  <text x="472" y="432" fill="#B6B6B6" font-size="18" font-family="Arial, sans-serif">PRE_LLM + POST_LLM policies</text>
+  <rect x="472" y="456" width="146" height="34" rx="17" fill="#FFFFFF"/>
+  <text x="515" y="478" fill="#050505" font-size="15" font-family="Arial, sans-serif" font-weight="700">Published</text>
+  <rect x="632" y="456" width="86" height="34" rx="17" fill="#1A1A1A" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="655" y="478" fill="#FFFFFF" font-size="15" font-family="Arial, sans-serif" font-weight="700">Rollback</text>
+
+  <rect x="792" y="280" width="328" height="224" rx="30" fill="#111111" stroke="#262626" stroke-width="2"/>
+  <text x="826" y="332" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif" font-weight="700" letter-spacing="2">EVIDENCE PACK</text>
+  <text x="826" y="390" fill="#FFFFFF" font-size="26" font-family="Arial, sans-serif" font-weight="700">Export control evidence</text>
+  <text x="826" y="432" fill="#B6B6B6" font-size="18" font-family="Arial, sans-serif">phases • policies • outcomes • audit trail</text>
+  <rect x="826" y="456" width="190" height="34" rx="17" fill="#FFFFFF"/>
+  <text x="860" y="478" fill="#050505" font-size="15" font-family="Arial, sans-serif" font-weight="700">EU AI Act / GDPR / KVKK</text>
+
+  <rect x="80" y="548" width="1040" height="232" rx="30" fill="#111111" stroke="#262626" stroke-width="2"/>
+  <text x="116" y="602" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif" font-weight="700" letter-spacing="2">AUDIT CHAIN</text>
+  <circle cx="172" cy="676" r="22" fill="#FFFFFF"/>
+  <circle cx="384" cy="676" r="22" fill="#FFFFFF"/>
+  <circle cx="596" cy="676" r="22" fill="#FFFFFF"/>
+  <circle cx="808" cy="676" r="22" fill="#FFFFFF"/>
+  <circle cx="1020" cy="676" r="22" fill="#FFFFFF"/>
+  <path d="M194 676H362" stroke="#FFFFFF" stroke-width="4"/>
+  <path d="M406 676H574" stroke="#FFFFFF" stroke-width="4"/>
+  <path d="M618 676H786" stroke="#FFFFFF" stroke-width="4"/>
+  <path d="M830 676H998" stroke="#FFFFFF" stroke-width="4"/>
+  <text x="130" y="728" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif">Prompt received</text>
+  <text x="344" y="728" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif">PRE_LLM check</text>
+  <text x="560" y="728" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif">Model response</text>
+  <text x="774" y="728" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif">POST_LLM check</text>
+  <text x="980" y="728" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif">Ledger write</text>
+</svg>

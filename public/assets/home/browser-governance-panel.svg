@@ -1,0 +1,43 @@
+<svg width="1400" height="980" viewBox="0 0 1400 980" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="980" rx="36" fill="#090909"/>
+  <rect x="20" y="20" width="1360" height="940" rx="28" fill="#0D0D0D" stroke="#2A2A2A"/>
+  <rect x="48" y="48" width="1304" height="72" rx="22" fill="#111111"/>
+  <rect x="76" y="76" width="188" height="14" rx="7" fill="#F3F3F3"/>
+  <rect x="1048" y="68" width="272" height="30" rx="15" fill="#171717"/>
+  <text x="1092" y="88" fill="#BEBEBE" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.2">CHATGPT / GEMINI / CLAUDE</text>
+  <rect x="48" y="156" width="852" height="756" rx="28" fill="#121212" stroke="#2D2D2D"/>
+  <rect x="932" y="156" width="420" height="756" rx="28" fill="#121212" stroke="#2D2D2D"/>
+  <text x="88" y="198" fill="#7E7E7E" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.7">BROWSER VIEW</text>
+  <text x="88" y="238" fill="#F3F3F3" font-family="Arial, sans-serif" font-size="30" font-weight="700">Managed employee session</text>
+  <rect x="88" y="286" width="772" height="72" rx="22" fill="#171717"/>
+  <rect x="122" y="312" width="262" height="16" rx="8" fill="#9E9E9E"/>
+  <rect x="88" y="390" width="772" height="182" rx="22" fill="#171717"/>
+  <rect x="88" y="600" width="772" height="272" rx="22" fill="#171717"/>
+  <text x="122" y="438" fill="#F3F3F3" font-family="Arial, sans-serif" font-size="18" font-weight="700">Prompt detected before submit</text>
+  <text x="122" y="474" fill="#9E9E9E" font-family="Arial, sans-serif" font-size="16">Customer data and policy numbers found in browser text.</text>
+  <rect x="122" y="508" width="132" height="30" rx="15" fill="#F3F3F3"/>
+  <text x="168" y="528" fill="#0B0B0B" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.2">REDACT</text>
+  <rect x="276" y="508" width="132" height="30" rx="15" fill="#1F1F1F"/>
+  <text x="324" y="528" fill="#BEBEBE" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.2">JUSTIFY</text>
+  <rect x="122" y="644" width="704" height="52" rx="16" fill="#0E0E0E"/>
+  <rect x="122" y="716" width="704" height="52" rx="16" fill="#0E0E0E"/>
+  <rect x="122" y="788" width="704" height="52" rx="16" fill="#0E0E0E"/>
+  <text x="154" y="677" fill="#BEBEBE" font-family="Arial, sans-serif" font-size="14">chatgpt.com</text>
+  <text x="154" y="749" fill="#BEBEBE" font-family="Arial, sans-serif" font-size="14">gemini.google.com</text>
+  <text x="154" y="821" fill="#BEBEBE" font-family="Arial, sans-serif" font-size="14">claude.ai</text>
+  <text x="972" y="198" fill="#7E7E7E" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.7">POLICY PANEL</text>
+  <text x="972" y="238" fill="#F3F3F3" font-family="Arial, sans-serif" font-size="30" font-weight="700">Action outcomes</text>
+  <rect x="972" y="286" width="340" height="114" rx="22" fill="#171717"/>
+  <rect x="972" y="424" width="340" height="114" rx="22" fill="#171717"/>
+  <rect x="972" y="562" width="340" height="114" rx="22" fill="#171717"/>
+  <rect x="972" y="700" width="340" height="140" rx="22" fill="#090909" stroke="#2D2D2D"/>
+  <text x="1004" y="326" fill="#7E7E7E" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.4">BLOCK</text>
+  <text x="1004" y="364" fill="#F3F3F3" font-family="Arial, sans-serif" font-size="20" font-weight="700">Stop raw sensitive data</text>
+  <text x="1004" y="464" fill="#7E7E7E" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.4">WARN</text>
+  <text x="1004" y="502" fill="#F3F3F3" font-family="Arial, sans-serif" font-size="20" font-weight="700">Explain policy context</text>
+  <text x="1004" y="602" fill="#7E7E7E" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.4">REDACT</text>
+  <text x="1004" y="640" fill="#F3F3F3" font-family="Arial, sans-serif" font-size="20" font-weight="700">Mask before submit</text>
+  <text x="1004" y="740" fill="#7E7E7E" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.4">AUDIT</text>
+  <text x="1004" y="778" fill="#F3F3F3" font-family="Arial, sans-serif" font-size="20" font-weight="700">Chain-valid event upload</text>
+  <text x="1004" y="812" fill="#9E9E9E" font-family="Arial, sans-serif" font-size="15">Every decision enters the same evidence trail.</text>
+</svg>

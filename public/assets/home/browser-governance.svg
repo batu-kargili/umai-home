@@ -1,0 +1,34 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#050505"/>
+  <rect x="42" y="42" width="1116" height="816" rx="36" fill="#0D0D0D" stroke="#242424" stroke-width="2"/>
+  <rect x="86" y="112" width="1028" height="676" rx="32" fill="#111111" stroke="#262626" stroke-width="2"/>
+  <rect x="86" y="112" width="1028" height="82" rx="32" fill="#161616"/>
+  <rect x="138" y="138" width="536" height="28" rx="14" fill="#1F1F1F"/>
+  <text x="166" y="158" fill="#8F8F8F" font-size="16" font-family="Arial, sans-serif">chatgpt.com</text>
+
+  <text x="130" y="252" fill="#8D8D8D" font-size="18" font-family="Arial, sans-serif" font-weight="700" letter-spacing="3">PROMPT BEFORE SEND</text>
+  <rect x="130" y="280" width="636" height="188" rx="28" fill="#1A1A1A" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="170" y="344" fill="#FFFFFF" font-size="28" font-family="Arial, sans-serif" font-weight="700">Summarize this claims file and include</text>
+  <text x="170" y="386" fill="#FFFFFF" font-size="28" font-family="Arial, sans-serif" font-weight="700">the customer national ID, policy number,</text>
+  <text x="170" y="428" fill="#FFFFFF" font-size="28" font-family="Arial, sans-serif" font-weight="700">and health notes.</text>
+
+  <rect x="804" y="280" width="248" height="188" rx="28" fill="#FFFFFF"/>
+  <text x="840" y="334" fill="#050505" font-size="22" font-family="Arial, sans-serif" font-weight="700">UMAI decision</text>
+  <text x="840" y="378" fill="#050505" font-size="34" font-family="Arial, sans-serif" font-weight="700">BLOCK</text>
+  <text x="840" y="420" fill="#5A5A5A" font-size="18" font-family="Arial, sans-serif">Sensitive data policy</text>
+
+  <rect x="130" y="510" width="922" height="184" rx="28" fill="#141414" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="170" y="564" fill="#8D8D8D" font-size="18" font-family="Arial, sans-serif" font-weight="700" letter-spacing="3">POLICY RESPONSE</text>
+  <text x="170" y="620" fill="#FFFFFF" font-size="30" font-family="Arial, sans-serif" font-weight="700">This prompt contains personal identifiers and special-category data.</text>
+  <text x="170" y="664" fill="#B5B5B5" font-size="22" font-family="Arial, sans-serif">Remove the restricted fields, redact them, or route the workflow through a governed app.</text>
+
+  <rect x="864" y="124" width="190" height="42" rx="21" fill="#FFFFFF"/>
+  <text x="904" y="150" fill="#050505" font-size="16" font-family="Arial, sans-serif" font-weight="700">Browser governance</text>
+
+  <rect x="130" y="732" width="202" height="34" rx="17" fill="#FFFFFF"/>
+  <text x="164" y="754" fill="#050505" font-size="15" font-family="Arial, sans-serif" font-weight="700">Warn / Block / Redact</text>
+  <rect x="350" y="732" width="210" height="34" rx="17" fill="#1A1A1A" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="386" y="754" fill="#FFFFFF" font-size="15" font-family="Arial, sans-serif" font-weight="700">ChatGPT / Gemini / Claude</text>
+  <rect x="578" y="732" width="212" height="34" rx="17" fill="#1A1A1A" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="618" y="754" fill="#FFFFFF" font-size="15" font-family="Arial, sans-serif" font-weight="700">Tamper-evident events</text>
+</svg>

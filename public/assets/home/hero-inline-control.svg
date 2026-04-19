@@ -1,0 +1,60 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#050505"/>
+  <rect x="40" y="40" width="1120" height="820" rx="36" fill="#0D0D0D" stroke="#242424" stroke-width="2"/>
+  <circle cx="104" cy="108" r="8" fill="#F3F3F3" fill-opacity="0.9"/>
+  <circle cx="136" cy="108" r="8" fill="#A3A3A3"/>
+  <circle cx="168" cy="108" r="8" fill="#505050"/>
+
+  <text x="76" y="186" fill="#8D8D8D" font-size="20" font-family="Arial, sans-serif" font-weight="700" letter-spacing="3">INLINE CONTROL LAYER</text>
+  <text x="76" y="246" fill="#FFFFFF" font-size="56" font-family="Arial, sans-serif" font-weight="700">User → App → UMAI → Model</text>
+  <text x="76" y="288" fill="#8D8D8D" font-size="24" font-family="Arial, sans-serif">One runtime path. One evidence trail. One operator surface.</text>
+
+  <rect x="76" y="352" width="220" height="120" rx="26" fill="#111111" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="106" y="402" fill="#FFFFFF" font-size="22" font-family="Arial, sans-serif" font-weight="700">User request</text>
+  <text x="106" y="438" fill="#8D8D8D" font-size="18" font-family="Arial, sans-serif">prompt or browser action</text>
+
+  <path d="M320 412H394" stroke="#F3F3F3" stroke-width="4" stroke-linecap="round"/>
+  <path d="M386 394L420 412L386 430" fill="#F3F3F3"/>
+
+  <rect x="430" y="352" width="220" height="120" rx="26" fill="#111111" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="470" y="402" fill="#FFFFFF" font-size="22" font-family="Arial, sans-serif" font-weight="700">App / Agent</text>
+  <text x="470" y="438" fill="#8D8D8D" font-size="18" font-family="Arial, sans-serif">chatbot, copilot, orchestration</text>
+
+  <path d="M674 412H748" stroke="#F3F3F3" stroke-width="4" stroke-linecap="round"/>
+  <path d="M740 394L774 412L740 430" fill="#F3F3F3"/>
+
+  <rect x="784" y="320" width="250" height="184" rx="30" fill="#FFFFFF"/>
+  <text x="820" y="374" fill="#050505" font-size="24" font-family="Arial, sans-serif" font-weight="700">UMAI Guardrail</text>
+  <text x="820" y="410" fill="#4A4A4A" font-size="18" font-family="Arial, sans-serif">PRE_LLM • POST_LLM • Audit</text>
+  <rect x="820" y="438" width="178" height="36" rx="18" fill="#111111"/>
+  <text x="851" y="462" fill="#FFFFFF" font-size="16" font-family="Arial, sans-serif" font-weight="700">ALLOW / BLOCK / WARN</text>
+
+  <path d="M1058 412H1124" stroke="#F3F3F3" stroke-width="4" stroke-linecap="round"/>
+  <path d="M1116 394L1150 412L1116 430" fill="#F3F3F3"/>
+
+  <rect x="944" y="560" width="172" height="96" rx="24" fill="#111111" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="978" y="607" fill="#FFFFFF" font-size="22" font-family="Arial, sans-serif" font-weight="700">Audit ledger</text>
+  <text x="978" y="637" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif">tamper-evident record</text>
+
+  <rect x="78" y="560" width="286" height="212" rx="30" fill="#111111" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="112" y="614" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif" font-weight="700" letter-spacing="2">PRE_LLM</text>
+  <text x="112" y="658" fill="#FFFFFF" font-size="24" font-family="Arial, sans-serif" font-weight="700">Prompt injection</text>
+  <text x="112" y="692" fill="#FFFFFF" font-size="24" font-family="Arial, sans-serif" font-weight="700">DLP and scope policy</text>
+  <text x="112" y="736" fill="#8D8D8D" font-size="18" font-family="Arial, sans-serif">Stop unsafe traffic before the model sees it.</text>
+
+  <rect x="392" y="560" width="286" height="212" rx="30" fill="#111111" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="426" y="614" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif" font-weight="700" letter-spacing="2">POST_LLM</text>
+  <text x="426" y="658" fill="#FFFFFF" font-size="24" font-family="Arial, sans-serif" font-weight="700">Response inspection</text>
+  <text x="426" y="692" fill="#FFFFFF" font-size="24" font-family="Arial, sans-serif" font-weight="700">Sensitive output checks</text>
+  <text x="426" y="736" fill="#8D8D8D" font-size="18" font-family="Arial, sans-serif">Inspect what leaves the model before users see it.</text>
+
+  <rect x="706" y="560" width="200" height="212" rx="30" fill="#111111" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="740" y="614" fill="#8D8D8D" font-size="16" font-family="Arial, sans-serif" font-weight="700" letter-spacing="2">DEPLOYMENT</text>
+  <text x="740" y="662" fill="#FFFFFF" font-size="22" font-family="Arial, sans-serif" font-weight="700">SaaS</text>
+  <text x="740" y="700" fill="#FFFFFF" font-size="22" font-family="Arial, sans-serif" font-weight="700">VPC</text>
+  <text x="740" y="738" fill="#FFFFFF" font-size="22" font-family="Arial, sans-serif" font-weight="700">On-prem</text>
+
+  <rect x="958" y="352" width="158" height="120" rx="26" fill="#111111" stroke="#2C2C2C" stroke-width="2"/>
+  <text x="995" y="402" fill="#FFFFFF" font-size="22" font-family="Arial, sans-serif" font-weight="700">Model</text>
+  <text x="995" y="438" fill="#8D8D8D" font-size="18" font-family="Arial, sans-serif">provider or local</text>
+</svg>
