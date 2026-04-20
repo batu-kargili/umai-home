@@ -5,6 +5,56 @@ import { HOME_DISCOVERY_LINKS } from "@/lib/site";
 
 const INTERNAL_FETCH_HEADER = "x-agent-markdown-bypass";
 
+function buildCandidateUrl(base: string, pathname: string, search: string) {
+  const url = new URL(base);
+  url.pathname = pathname;
+  url.search = search;
+  return url.toString();
+}
+
+function getHtmlFetchCandidates(request: NextRequest, pathname: string, search: string) {
+  const candidates: string[] = [];
+  const loopbackPort = process.env.PORT || request.nextUrl.port;
+  const forwardedHost =
+    request.headers.get("x-forwarded-host") ?? request.headers.get("host");
+  const forwardedProto =
+    request.headers.get("x-forwarded-proto") ??
+    request.nextUrl.protocol.replace(/:$/, "");
+
+  if (loopbackPort) {
+    candidates.push(buildCandidateUrl(`http://127.0.0.1:${loopbackPort}`, pathname, search));
+  }
+
+  if (forwardedHost && forwardedProto) {
+    candidates.push(buildCandidateUrl(`${forwardedProto}://${forwardedHost}`, pathname, search));
+  }
+
+  candidates.push(buildCandidateUrl(request.nextUrl.origin, pathname, search));
+
+  return Array.from(new Set(candidates));
+}
+
+async function fetchHtmlResponse(candidates: string[]) {
+  let lastError: unknown;
+
+  for (const candidate of candidates) {
+    try {
+      return await fetch(candidate, {
+        headers: {
+          Accept: "text/html",
+          [INTERNAL_FETCH_HEADER]: "1",
+        },
+        cache: "no-store",
+        redirect: "follow",
+      });
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError;
+}
+
 function appendVaryHeader(response: NextResponse, value: string) {
   const existing = response.headers.get("Vary");
 
@@ -57,23 +107,22 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
     return new NextResponse("Invalid path", { status: 400 });
   }
 
-  const htmlResponse = await fetch(targetUrl, {
-    headers: {
-      Accept: "text/html",
-      [INTERNAL_FETCH_HEADER]: "1",
-    },
-    cache: "no-store",
-    redirect: "manual",
-  });
+  const htmlResponse = await fetchHtmlResponse(
+    getHtmlFetchCandidates(request, targetUrl.pathname, targetUrl.search),
+  );
 
   if (!htmlResponse.ok) {
-    return new NextResponse(htmlResponse.body, {
+    const response = new NextResponse(htmlResponse.body, {
       status: htmlResponse.status,
       headers: {
         "Content-Type":
           htmlResponse.headers.get("Content-Type") || "text/plain; charset=utf-8",
       },
     });
+
+    appendVaryHeader(response, "Accept");
+
+    return response;
   }
 
   const html = await htmlResponse.text();

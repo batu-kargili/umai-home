@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { BlogPostPageClient } from "@/components/blog/BlogPostPageClient";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
-  BLOG_POSTS,
+  getAllBlogRouteSlugs,
+  getCanonicalBlogPostSlug,
   getBlogPostBySlug,
   getRelatedBlogPosts,
 } from "@/lib/blog-data";
@@ -17,7 +18,7 @@ import {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return BLOG_POSTS.map((post) => ({ slug: post.slug }));
+  return getAllBlogRouteSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -26,6 +27,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const canonicalSlug = getCanonicalBlogPostSlug(slug);
   const post = getBlogPostBySlug(slug);
 
   if (!post) {
@@ -38,7 +40,7 @@ export async function generateMetadata({
   }
 
   return buildPageMetadata({
-    path: `/blog/${post.slug}`,
+    path: `/blog/${canonicalSlug}`,
     title: post.title,
     description: post.excerpt,
     type: "article",
@@ -53,6 +55,12 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const canonicalSlug = getCanonicalBlogPostSlug(slug);
+
+  if (canonicalSlug !== slug) {
+    redirect(`/blog/${canonicalSlug}`);
+  }
+
   const post = getBlogPostBySlug(slug);
 
   if (!post) {

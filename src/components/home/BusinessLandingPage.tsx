@@ -49,19 +49,19 @@ const VALUE_PROPS = [
     title: "Eliminate AI compliance gaps",
     body: "Replace ad-hoc policy documents and fragmented reviews with one inline enforcement platform across every AI surface.",
     link: "See how regulated enterprises close compliance gaps",
-    href: "/blog/eliminate-ai-compliance-gaps",
+    href: "/blog/evidence-first-ai-governance",
   },
   {
     title: "Enforce policy at the source",
     body: "Stop data leakage and prompt injection before they reach the model -not after the damage is done.",
     link: "See how healthcare teams maintain HIPAA compliance",
-    href: "/blog/enforce-policy-at-the-source",
+    href: "/blog/runtime-controls-prompt-injection-data-leakage",
   },
   {
     title: "Be audit-ready for AI now",
     body: "Ensure regulators, auditors, and compliance teams have tamper-evident, hash-chained evidence in real time.",
     link: "See 14x faster audit cycles at regulated enterprises",
-    href: "/blog/audit-ready-tamper-evident-evidence",
+    href: "/blog/evidence-first-ai-governance",
   },
 ];
 

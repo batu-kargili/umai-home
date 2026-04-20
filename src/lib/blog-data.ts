@@ -25,6 +25,19 @@ export interface BlogPost {
 
 export type BlogPostPreview = Omit<BlogPost, "content">;
 
+export const BLOG_SLUG_REDIRECTS = {
+  "eliminate-ai-compliance-gaps": "evidence-first-ai-governance",
+  "enforce-policy-at-the-source":
+    "runtime-controls-prompt-injection-data-leakage",
+  "audit-ready-tamper-evident-evidence": "evidence-first-ai-governance",
+  "eu-ai-act-readiness-without-operational-drag":
+    "evidence-first-ai-governance",
+  "enterprise-control-apps-agents-copilots":
+    "runtime-controls-prompt-injection-data-leakage",
+  "policy-enforcement-milliseconds":
+    "runtime-controls-prompt-injection-data-leakage",
+} as const;
+
 export const BLOG_CATEGORIES: BlogCategory[] = [
   "All",
   "Engineering",
@@ -1420,8 +1433,18 @@ export function getBlogCategoryHref(category: BlogCategory) {
   return queryValue ? `/blog?category=${queryValue}` : "/blog";
 }
 
+export function getCanonicalBlogPostSlug(slug: string) {
+  return BLOG_SLUG_REDIRECTS[slug as keyof typeof BLOG_SLUG_REDIRECTS] ?? slug;
+}
+
 export function getBlogPostBySlug(slug: string) {
-  return BLOG_POSTS.find((post) => post.slug === slug);
+  const canonicalSlug = getCanonicalBlogPostSlug(slug);
+
+  return BLOG_POSTS.find((post) => post.slug === canonicalSlug);
+}
+
+export function getAllBlogRouteSlugs() {
+  return [...BLOG_POSTS.map((post) => post.slug), ...Object.keys(BLOG_SLUG_REDIRECTS)];
 }
 
 export function getRelatedBlogPosts(post: BlogPost, limit = 3) {

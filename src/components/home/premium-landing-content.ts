@@ -30,19 +30,19 @@ export const VALUE_PROPS = [
     title: "Eliminate AI compliance gaps",
     body: "Replace ad hoc policy reviews with one inline enforcement platform across every AI surface.",
     link: "See how regulated enterprises close compliance gaps",
-    href: "/blog/eliminate-ai-compliance-gaps",
+    href: "/blog/evidence-first-ai-governance",
   },
   {
     title: "Enforce policy at the source",
     body: "Stop data leakage and prompt injection before they reach the model, not after damage is done.",
     link: "See how healthcare teams maintain AI governance",
-    href: "/blog/enforce-policy-at-the-source",
+    href: "/blog/runtime-controls-prompt-injection-data-leakage",
   },
   {
     title: "Be audit-ready for AI now",
     body: "Give regulators, auditors, and compliance teams tamper-evident evidence in real time.",
     link: "See how governance teams compress audit cycles",
-    href: "/blog/audit-ready-tamper-evident-evidence",
+    href: "/blog/evidence-first-ai-governance",
   },
 ];
 
@@ -79,16 +79,16 @@ export const TICKER_ITEMS = [
     href: "/blog/browser-ai-governance-beyond-api-perimeter",
   },
   {
-    text: "EU AI Act readiness without operational drag",
-    href: "/blog/eu-ai-act-readiness-without-operational-drag",
+    text: "Building multi-tenant AI safety for SaaS platforms",
+    href: "/blog/multi-tenant-guardrails",
   },
   {
-    text: "Enterprise control for apps, agents, and copilots",
-    href: "/blog/enterprise-control-apps-agents-copilots",
+    text: "UMAI is generally available for enterprise AI guardrails",
+    href: "/blog/umai-ga-announcement",
   },
   {
-    text: "Policy enforcement in milliseconds, not minutes",
-    href: "/blog/policy-enforcement-milliseconds",
+    text: "Organization-scope policies and policy inheritance",
+    href: "/blog/changelog-v1-policy-scopes",
   },
 ];
 

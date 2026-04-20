@@ -1,25 +1,25 @@
 {
   "name": "UMAI website discovery",
   "publisher": "UMAI",
-  "homepage": "https://umaisolutions.com/",
-  "version": "1ai/",
+  "homepage": "https://umai.ai/",
+  "version": "1.0.0",
   "description": "Discovery metadata for the UMAI public website, product documentation, crawler policy, and canonical URL set.",
   "resources": [
     {
       "rel": "service-doc",
-      "href": "https://umaisolutions.com/docs",
+      "href": "https://umai.ai/docs",
       "type": "text/html",
       "title": "UMAI platform documentation"
     },
     {
       "rel": "describedby",
-      "href": "https://umaisolutions.com/sitemap.xml",
+      "href": "https://umai.ai/sitemap.xml",
       "type": "application/xml",
       "title": "Canonical sitemap"
     },
     {
       "rel": "describedby",
-      "href": "https://umaisolutions.com/robots.txt",
+      "href": "https://umai.ai/robots.txt",
       "type": "text/plain",
       "title": "Crawler access policy"
     }
