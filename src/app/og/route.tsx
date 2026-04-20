@@ -6,8 +6,6 @@ import {
   SITE_NAME,
 } from "@/lib/site";
 
-export const runtime = "edge";
-
 const title = "Control Plane for Enterprise AI";
 const description =
   "Runtime guardrails, browser governance, and tamper-evident audit evidence.";
