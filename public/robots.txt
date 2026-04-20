@@ -50,4 +50,4 @@ User-agent: Applebot-Extended
 Disallow: /
 Content-Signal: ai-train=no, search=no, ai-input=no
 
-Sitemap: https://umai.ai/sitemap.xml
+Sitemap: https://umaisolutions.com/sitemap.xml

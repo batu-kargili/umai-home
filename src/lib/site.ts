@@ -1,9 +1,11 @@
-import { statSync } from "node:fs";
-import { join } from "node:path";
-
 export const SITE_NAME = "UMAI";
 
-export const SITE_URL = "https://umai.ai";
+const DEFAULT_SITE_URL = "https://umaisolutions.com";
+
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_SITE_URL).replace(
+  /\/$/,
+  "",
+);
 
 export const SITE_TWITTER_HANDLE = "@umaiAI";
 
@@ -12,10 +14,16 @@ export const SITE_DEFAULT_TITLE = "UMAI | Control Plane for Enterprise AI";
 export const SITE_DESCRIPTION =
   "UMAI is the control plane for enterprise AI: an inline runtime layer for real-time enforcement, browser governance, tamper-evident audit evidence, and sovereign deployment.";
 
-export const SITE_DEFAULT_OG_IMAGE = "/assets/home/Policies.png";
+export const SITE_DEFAULT_OG_IMAGE = "/og";
+
+export const SITE_DEFAULT_OG_IMAGE_WIDTH = 1200;
+
+export const SITE_DEFAULT_OG_IMAGE_HEIGHT = 630;
+
+export const SITE_DEFAULT_OG_IMAGE_TYPE = "image/png";
 
 export const SITE_DEFAULT_OG_IMAGE_ALT =
-  "UMAI control center overview";
+  "UMAI enterprise AI control plane preview";
 
 export const SITE_PRIMARY_LINKS = [
   {
@@ -129,8 +137,4 @@ export const STATIC_SITEMAP_ROUTES = [
 
 export function toAbsoluteUrl(path: string) {
   return new URL(path, SITE_URL).toString();
-}
-
-export function getSourceLastModified(relativePath: string) {
-  return statSync(join(process.cwd(), relativePath)).mtime;
 }

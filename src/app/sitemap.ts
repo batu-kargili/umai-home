@@ -4,11 +4,8 @@ import { umaiFeatures } from "@/content/umai-features";
 import { umaiInnovations } from "@/content/umai-innovations";
 import { umaiSolutions } from "@/content/umai-solutions";
 import { BLOG_POSTS } from "@/lib/blog-data";
-import {
-  STATIC_SITEMAP_ROUTES,
-  getSourceLastModified,
-  toAbsoluteUrl,
-} from "@/lib/site";
+import { STATIC_SITEMAP_ROUTES, toAbsoluteUrl } from "@/lib/site";
+import { getSourceLastModified } from "@/lib/site-source";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const featureLastModified = getSourceLastModified("src/content/umai-features.ts");

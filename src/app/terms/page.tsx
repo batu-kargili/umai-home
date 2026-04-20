@@ -37,8 +37,8 @@ export default function TermsPage() {
             </p>
             <p>
               For pilot, procurement, or legal review requests, contact{" "}
-              <Link href="mailto:contact@umai.ai" className="text-white underline underline-offset-4">
-                contact@umai.ai
+              <Link href="mailto:contact@umaisolutions.com" className="text-white underline underline-offset-4">
+                contact@umaisolutions.com
               </Link>
               . We can provide the current terms package alongside security, compliance, and deployment documentation.
             </p>

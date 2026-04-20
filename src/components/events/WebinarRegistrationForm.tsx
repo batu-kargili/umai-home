@@ -78,7 +78,7 @@ export function WebinarRegistrationForm() {
       `Receive updates: ${values.updates ? "Yes" : "No"}`,
     ].join("\n");
 
-    window.location.href = `mailto:contact@umai.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:contact@umaisolutions.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 
@@ -218,10 +218,10 @@ export function WebinarRegistrationForm() {
             Your email client should open with the registration details prefilled.
             If not, send your request to{" "}
             <Link
-              href="mailto:contact@umai.ai"
+              href="mailto:contact@umaisolutions.com"
               className="font-semibold text-landing-blue-light underline underline-offset-4"
             >
-              contact@umai.ai
+              contact@umaisolutions.com
             </Link>
             .
           </p>

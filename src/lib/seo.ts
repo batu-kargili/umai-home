@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 
 import {
   SITE_DEFAULT_OG_IMAGE,
+  SITE_DEFAULT_OG_IMAGE_HEIGHT,
   SITE_DEFAULT_OG_IMAGE_ALT,
+  SITE_DEFAULT_OG_IMAGE_TYPE,
+  SITE_DEFAULT_OG_IMAGE_WIDTH,
   SITE_DEFAULT_TITLE,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_TWITTER_HANDLE,
+  toAbsoluteUrl,
 } from "@/lib/site";
 
 type MetadataTitle = NonNullable<Metadata["title"]>;
@@ -57,6 +61,7 @@ export function buildPageMetadata({
 }: PageMetadataOptions): Metadata {
   const resolvedOgTitle = resolveOgTitle(title, ogTitle);
   const resolvedImageAlt = imageAlt ?? SITE_DEFAULT_OG_IMAGE_ALT;
+  const resolvedImageUrl = toAbsoluteUrl(image);
 
   return {
     title,
@@ -68,14 +73,17 @@ export function buildPageMetadata({
     },
     openGraph: {
       type,
-      url: path,
+      url: toAbsoluteUrl(path),
       title: resolvedOgTitle,
       description,
       siteName: SITE_NAME,
       images: [
         {
-          url: image,
+          url: resolvedImageUrl,
           alt: resolvedImageAlt,
+          width: SITE_DEFAULT_OG_IMAGE_WIDTH,
+          height: SITE_DEFAULT_OG_IMAGE_HEIGHT,
+          type: SITE_DEFAULT_OG_IMAGE_TYPE,
         },
       ],
       ...(publishedTime ? { publishedTime } : {}),
@@ -86,7 +94,12 @@ export function buildPageMetadata({
       site: SITE_TWITTER_HANDLE,
       title: resolvedOgTitle,
       description,
-      images: [image],
+      images: [
+        {
+          url: resolvedImageUrl,
+          alt: resolvedImageAlt,
+        },
+      ],
     },
   };
 }

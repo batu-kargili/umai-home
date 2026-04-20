@@ -163,7 +163,7 @@ If you are responsible for AI security and you do not yet have runtime controls 
 
 Deploy PRE_LLM enforcement first. Add POST_LLM enforcement once the PRE_LLM baseline is stable. Extend coverage to the next surface. Repeat until the AI footprint is governed end-to-end.
 
-If you want a deeper conversation about how this would map to your environment, contact us at contact@umai.ai.`,
+If you want a deeper conversation about how this would map to your environment, contact us at contact@umaisolutions.com.`,
   },
   {
     slug: "evidence-first-ai-governance",
@@ -245,7 +245,7 @@ If your organization is operating AI systems at any meaningful scale and your go
 
 Run that audit cycle on the new evidence. Compare the cycle time, the team effort, and the auditor's level of confidence to the previous cycle. The numbers make the case for extending the model to the rest of the AI footprint better than any internal pitch deck will.
 
-If you want to walk through how this maps to a specific framework — SOC 2, ISO 42001, EU AI Act, HIPAA, GLBA — contact us at contact@umai.ai.`,
+If you want to walk through how this maps to a specific framework — SOC 2, ISO 42001, EU AI Act, HIPAA, GLBA — contact us at contact@umaisolutions.com.`,
   },
   {
     slug: "browser-ai-governance-beyond-api-perimeter",
@@ -330,7 +330,7 @@ If you operate in a regulated industry and your AI governance program does not c
 
 From there, the deployment pattern follows from the risk posture. The architectural step — installing a managed browser extension that enforces the same policies as the API-side control — is the same in every case.
 
-If you want help running the discovery or scoping a deployment, contact us at contact@umai.ai.`,
+If you want help running the discovery or scoping a deployment, contact us at contact@umaisolutions.com.`,
   },
   {
     slug: "eu-ai-act-readiness-without-operational-drag",
@@ -420,7 +420,7 @@ Done this way, EU AI Act readiness becomes an operational discipline rather than
 
 ## Where to Start
 
-If you want a structured walkthrough of how UMAI's controls map to the Act's specific articles, including model documentation templates and audit evidence packages, contact us at contact@umai.ai. We have run this mapping with teams in financial services, healthcare, insurance, and the public sector, and the playbook is ready to share.`,
+If you want a structured walkthrough of how UMAI's controls map to the Act's specific articles, including model documentation templates and audit evidence packages, contact us at contact@umaisolutions.com. We have run this mapping with teams in financial services, healthcare, insurance, and the public sector, and the playbook is ready to share.`,
   },
   {
     slug: "enterprise-control-apps-agents-copilots",
@@ -513,7 +513,7 @@ If your organization has multiple AI surfaces governed by separate vendors, sepa
 
 The map almost always reveals the case for consolidation on its own. From there, the migration path is to establish the unified control plane on the next surface that needs new or upgraded governance, and migrate existing surfaces in priority order as their current solutions reach end-of-contract.
 
-If you want help running this mapping or scoping the migration, contact us at contact@umai.ai.`,
+If you want help running this mapping or scoping the migration, contact us at contact@umaisolutions.com.`,
   },
   {
     slug: "policy-enforcement-milliseconds",
@@ -606,7 +606,7 @@ Vendors that cannot answer these questions concretely have not designed for the 
 
 If you are running into latency-driven resistance to AI governance controls in your organization, the conversation usually changes when the actual numbers are on the table. A short benchmark of enforcement latency under your real workload, against the user-experience requirements of your AI features, makes the gap (or the absence of a gap) concrete.
 
-If you would like help running that benchmark, contact us at contact@umai.ai.`,
+If you would like help running that benchmark, contact us at contact@umaisolutions.com.`,
   },
   {
     slug: "eliminate-ai-compliance-gaps",
@@ -701,7 +701,7 @@ If you are responsible for AI risk or compliance at a regulated enterprise, the 
 3. **For each surface and policy, ask "where is the enforcement, and where is the evidence?"** Honest answers usually reveal the gap immediately.
 4. **Pick the highest-risk surface and deploy inline enforcement there first.** Production wins build the case for broader rollout faster than slideware.
 
-If you would like a structured walkthrough of this assessment for your environment, contact us at contact@umai.ai. We have run it with teams in banking, insurance, healthcare, and government, and we are happy to share the playbook.`,
+If you would like a structured walkthrough of this assessment for your environment, contact us at contact@umaisolutions.com. We have run it with teams in banking, insurance, healthcare, and government, and we are happy to share the playbook.`,
   },
   {
     slug: "enforce-policy-at-the-source",
@@ -758,7 +758,7 @@ We have documented cases at multiple healthcare customers where benign user prom
 
 ### Layer 3 — Govern the Browser
 
-Approximately 40 percent of the unsanctioned AI usage at the healthcare organizations we work with happens through web browsers — clinicians and administrators pasting clinical content into consumer AI tools. PRE_LLM enforcement on the API perimeter does not catch this. Browser-side policy enforcement does, by inspecting outbound prompts at the point they are typed or pasted into chat.umai.ai-like surfaces and applying the same policy logic.
+Approximately 40 percent of the unsanctioned AI usage at the healthcare organizations we work with happens through web browsers — clinicians and administrators pasting clinical content into consumer AI tools. PRE_LLM enforcement on the API perimeter does not catch this. Browser-side policy enforcement does, by inspecting outbound prompts at the point they are typed or pasted into chat.umaisolutions.com-like surfaces and applying the same policy logic.
 
 Together, these three layers convert "we have an acceptable use policy" into "we structurally prevent the violations that policy describes."
 
@@ -801,7 +801,7 @@ If your organization processes regulated data and is rolling out AI features, th
 3. **Add POST_LLM enforcement once PRE_LLM is stable.** This catches the model-generated-content category that PRE_LLM cannot address.
 4. **Extend coverage to browser-mediated AI usage.** This is almost always the surface that contributes the most incident volume relative to the controls applied.
 
-If you want to talk through how this would map to your environment, reach out at contact@umai.ai. We work with healthcare, financial services, insurance, and government teams every week, and we are happy to share what has worked.`,
+If you want to talk through how this would map to your environment, reach out at contact@umaisolutions.com. We work with healthcare, financial services, insurance, and government teams every week, and we are happy to share what has worked.`,
   },
   {
     slug: "audit-ready-tamper-evident-evidence",
@@ -904,7 +904,7 @@ If you own AI risk or audit at a regulated enterprise, the highest-leverage star
 3. **Use the evidence directly in the audit.** Skip the reconstruction step. Query the evidence store, run the verification, and let the auditor see the same data the runtime system saw.
 4. **Measure the cycle time and team effort.** Compare to the previous cycle. The numbers will make the case for extending evidence-first controls to the rest of the AI footprint.
 
-If you want a deeper walkthrough of how this works for a specific framework — SOC 2, ISO 42001, EU AI Act, HIPAA, GLBA, FedRAMP — contact us at contact@umai.ai. We are happy to map UMAI's evidence model to the specific control language your auditors use.`,
+If you want a deeper walkthrough of how this works for a specific framework — SOC 2, ISO 42001, EU AI Act, HIPAA, GLBA, FedRAMP — contact us at contact@umaisolutions.com. We are happy to map UMAI's evidence model to the specific control language your auditors use.`,
   },
   {
     slug: "prompt-injection-defense-2025",
@@ -988,7 +988,7 @@ Total added latency for a typical request: under 2 milliseconds.
 
 4. **Measure false positives as carefully as detections.** A system that blocks too aggressively will be turned off by frustrated users — leaving you with no protection at all.
 
-If you are building AI systems that handle sensitive data or serve enterprise customers, we would love to show you how UMAI can help. Start a free pilot at app.umai.ai/signup.`,
+If you are building AI systems that handle sensitive data or serve enterprise customers, we would love to show you how UMAI can help. Start a free pilot at app.umaisolutions.com/signup.`,
   },
   {
     slug: "soc2-ai-compliance",
@@ -1081,7 +1081,7 @@ If you are preparing for a SOC 2 audit with AI systems in scope, here is what we
 
 4. **Run for at least one audit period.** SOC 2 Type II requires evidence over time. The sooner you start logging, the sooner you will have a complete audit trail.
 
-Contact us at contact@umai.ai to schedule a compliance-focused walkthrough.`,
+Contact us at contact@umaisolutions.com to schedule a compliance-focused walkthrough.`,
   },
   {
     slug: "post-llm-pii-detection",
@@ -1167,7 +1167,7 @@ UMAI's POST_LLM layer caught and redacted those hallucinated MRNs before they re
 
 5. **Review the POST_LLM audit log weekly.** Trends in PII detection often reveal upstream issues — like a training data leak or a misconfigured RAG pipeline — that should be fixed at the source.
 
-UMAI's POST_LLM layer is available on all plans. Set it up in under 10 minutes at app.umai.ai.`,
+UMAI's POST_LLM layer is available on all plans. Set it up in under 10 minutes at app.umaisolutions.com.`,
   },
   {
     slug: "multi-tenant-guardrails",
@@ -1254,7 +1254,7 @@ If you are building a SaaS platform with AI features and considering multi-tenan
 
 5. **Benchmark latency under multi-tenant load.** Single-tenant performance benchmarks are misleading. Test with realistic multi-tenant traffic patterns, including noisy-neighbor scenarios.
 
-Want to see how UMAI's multi-tenant architecture works for your platform? Book a technical deep-dive at contact@umai.ai.`,
+Want to see how UMAI's multi-tenant architecture works for your platform? Book a technical deep-dive at contact@umaisolutions.com.`,
   },
   {
     slug: "umai-ga-announcement",
@@ -1330,7 +1330,7 @@ We are just getting started. Here is what is on our roadmap for the first half o
 
 ## Get Started
 
-UMAI is available today with a free tier for small teams and usage-based pricing for enterprises. Sign up at app.umai.ai/signup or contact our sales team at contact@umai.ai for a guided deployment.
+UMAI is available today with a free tier for small teams and usage-based pricing for enterprises. Sign up at app.umaisolutions.com/signup or contact our sales team at contact@umaisolutions.com for a guided deployment.
 
 Thank you to every beta customer who helped us build UMAI into what it is today. We are honored to be your AI governance platform.`,
   },

@@ -77,7 +77,7 @@ export default function PrivacyPage() {
                   <ChevronRight className="h-4 w-4" />
                 </Link>
                 <Link
-                  href="mailto:contact@umai.ai"
+                  href="mailto:contact@umaisolutions.com"
                   className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50"
                 >
                   Contact privacy team
@@ -384,10 +384,10 @@ export default function PrivacyPage() {
                     For privacy questions, data rights requests, or website data
                     handling concerns, contact{" "}
                     <Link
-                      href="mailto:contact@umai.ai"
+                      href="mailto:contact@umaisolutions.com"
                       className="font-semibold text-[#0056f9] underline underline-offset-4"
                     >
-                      contact@umai.ai
+                      contact@umaisolutions.com
                     </Link>
                     .
                   </p>
