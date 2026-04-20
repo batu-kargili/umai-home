@@ -48,7 +48,7 @@ const BLOG_CATEGORY_QUERY_VALUES: Record<BlogCategory, string | null> = {
 
 const AUTHOR = {
   name: "Özer Batu Kargılı",
-  role: "Founder & CEO",
+  role: "Co-Founder & CTO",
   avatar: "ÖB",
 } as const;
 
