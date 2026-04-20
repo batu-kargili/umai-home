@@ -4,7 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import { BlogPostPageClient } from "@/components/blog/BlogPostPageClient";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
-  getAllBlogRouteSlugs,
+  BLOG_POSTS,
   getCanonicalBlogPostSlug,
   getBlogPostBySlug,
   getRelatedBlogPosts,
@@ -15,10 +15,8 @@ import {
   buildBreadcrumbJsonLd,
 } from "@/lib/structured-data";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
-  return getAllBlogRouteSlugs().map((slug) => ({ slug }));
+  return BLOG_POSTS.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({

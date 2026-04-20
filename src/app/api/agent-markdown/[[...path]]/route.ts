@@ -1,58 +1,127 @@
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { NextRequest, NextResponse } from "next/server";
 
 import { convertHtmlToMarkdown } from "@/lib/markdown-for-agents";
 import { HOME_DISCOVERY_LINKS } from "@/lib/site";
 
 const INTERNAL_FETCH_HEADER = "x-agent-markdown-bypass";
+const HTML_CONTENT_TYPES = ["text/html", "application/xhtml+xml"];
+const FETCH_TIMEOUT_MS = 8000;
+const PASSTHROUGH_RESPONSE_HEADERS = [
+  "cache-control",
+  "content-type",
+  "etag",
+  "last-modified",
+] as const;
 
-function buildCandidateUrl(base: string, pathname: string, search: string) {
-  const url = new URL(base);
-  url.pathname = pathname;
-  url.search = search;
-  return url.toString();
-}
+function getInternalFetchHeaders(request: NextRequest) {
+  const headers = new Headers({
+    Accept: "text/html",
+    [INTERNAL_FETCH_HEADER]: "1",
+  });
 
-function getHtmlFetchCandidates(request: NextRequest, pathname: string, search: string) {
-  const candidates: string[] = [];
-  const loopbackPort = process.env.PORT || request.nextUrl.port;
-  const forwardedHost =
-    request.headers.get("x-forwarded-host") ?? request.headers.get("host");
-  const forwardedProto =
-    request.headers.get("x-forwarded-proto") ??
-    request.nextUrl.protocol.replace(/:$/, "");
+  for (const headerName of ["accept-language", "cookie", "user-agent"] as const) {
+    const value = request.headers.get(headerName);
 
-  if (loopbackPort) {
-    candidates.push(buildCandidateUrl(`http://127.0.0.1:${loopbackPort}`, pathname, search));
-  }
-
-  if (forwardedHost && forwardedProto) {
-    candidates.push(buildCandidateUrl(`${forwardedProto}://${forwardedHost}`, pathname, search));
-  }
-
-  candidates.push(buildCandidateUrl(request.nextUrl.origin, pathname, search));
-
-  return Array.from(new Set(candidates));
-}
-
-async function fetchHtmlResponse(candidates: string[]) {
-  let lastError: unknown;
-
-  for (const candidate of candidates) {
-    try {
-      return await fetch(candidate, {
-        headers: {
-          Accept: "text/html",
-          [INTERNAL_FETCH_HEADER]: "1",
-        },
-        cache: "no-store",
-        redirect: "follow",
-      });
-    } catch (error) {
-      lastError = error;
+    if (value) {
+      headers.set(headerName, value);
     }
   }
 
-  throw lastError;
+  return headers;
+}
+
+function buildUrlForHost(host: string, pathname: string, search: string) {
+  const protocol =
+    host.includes("localhost") || host.includes("127.0.0.1") ? "http" : "https";
+  const url = new URL(`${protocol}://${host}`);
+
+  url.pathname = pathname;
+  url.search = search;
+
+  return url.toString();
+}
+
+function buildPassThroughResponse(upstreamResponse: Response) {
+  const headers = new Headers();
+
+  for (const headerName of PASSTHROUGH_RESPONSE_HEADERS) {
+    const value = upstreamResponse.headers.get(headerName);
+
+    if (value) {
+      headers.set(headerName, value);
+    }
+  }
+
+  const response = new NextResponse(upstreamResponse.body, {
+    status: upstreamResponse.status,
+    headers,
+  });
+
+  appendVaryHeader(response, "Accept");
+
+  return response;
+}
+
+function isHtmlResponse(response: Response) {
+  const contentType = response.headers.get("content-type");
+
+  if (!contentType) {
+    return true;
+  }
+
+  return HTML_CONTENT_TYPES.some((value) => contentType.includes(value));
+}
+
+async function fetchWithTimeout(input: string, init: RequestInit) {
+  return fetch(input, {
+    ...init,
+    signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+  });
+}
+
+async function fetchFromWorkerSelfReference(
+  request: NextRequest,
+  pathname: string,
+  search: string,
+) {
+  try {
+    const { env } = await getCloudflareContext({ async: true });
+    const service = env.WORKER_SELF_REFERENCE;
+    const host =
+      request.headers.get("x-forwarded-host") ?? request.headers.get("host");
+
+    if (!service || !host) {
+      return null;
+    }
+
+    return await service.fetch(buildUrlForHost(host, pathname, search), {
+      headers: getInternalFetchHeaders(request),
+      redirect: "follow",
+      cache: "no-store",
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+    });
+  } catch {
+    return null;
+  }
+}
+
+async function fetchHtmlResponse(request: NextRequest, pathname: string, search: string) {
+  const workerResponse = await fetchFromWorkerSelfReference(request, pathname, search);
+
+  if (workerResponse) {
+    return workerResponse;
+  }
+
+  const fallbackUrl = new URL(request.nextUrl.origin);
+  fallbackUrl.pathname = pathname;
+  fallbackUrl.search = search;
+
+  return fetchWithTimeout(fallbackUrl.toString(), {
+    headers: getInternalFetchHeaders(request),
+    cache: "no-store",
+    redirect: "follow",
+  });
 }
 
 function appendVaryHeader(response: NextResponse, value: string) {
@@ -108,21 +177,17 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
   }
 
   const htmlResponse = await fetchHtmlResponse(
-    getHtmlFetchCandidates(request, targetUrl.pathname, targetUrl.search),
+    request,
+    targetUrl.pathname,
+    targetUrl.search,
   );
 
   if (!htmlResponse.ok) {
-    const response = new NextResponse(htmlResponse.body, {
-      status: htmlResponse.status,
-      headers: {
-        "Content-Type":
-          htmlResponse.headers.get("Content-Type") || "text/plain; charset=utf-8",
-      },
-    });
+    return buildPassThroughResponse(htmlResponse);
+  }
 
-    appendVaryHeader(response, "Accept");
-
-    return response;
+  if (!isHtmlResponse(htmlResponse)) {
+    return buildPassThroughResponse(htmlResponse);
   }
 
   const html = await htmlResponse.text();

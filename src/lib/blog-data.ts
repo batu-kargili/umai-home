@@ -26,16 +26,6 @@ export interface BlogPost {
 export type BlogPostPreview = Omit<BlogPost, "content">;
 
 export const BLOG_SLUG_REDIRECTS = {
-  "eliminate-ai-compliance-gaps": "evidence-first-ai-governance",
-  "enforce-policy-at-the-source":
-    "runtime-controls-prompt-injection-data-leakage",
-  "audit-ready-tamper-evident-evidence": "evidence-first-ai-governance",
-  "eu-ai-act-readiness-without-operational-drag":
-    "evidence-first-ai-governance",
-  "enterprise-control-apps-agents-copilots":
-    "runtime-controls-prompt-injection-data-leakage",
-  "policy-enforcement-milliseconds":
-    "runtime-controls-prompt-injection-data-leakage",
 } as const;
 
 export const BLOG_CATEGORIES: BlogCategory[] = [
@@ -1434,6 +1424,10 @@ export function getBlogCategoryHref(category: BlogCategory) {
 }
 
 export function getCanonicalBlogPostSlug(slug: string) {
+  if (BLOG_POSTS.some((post) => post.slug === slug)) {
+    return slug;
+  }
+
   return BLOG_SLUG_REDIRECTS[slug as keyof typeof BLOG_SLUG_REDIRECTS] ?? slug;
 }
 
