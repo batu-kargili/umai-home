@@ -54,7 +54,7 @@ export function PremiumHeroSection() {
             <div className="pointer-events-none absolute inset-0 opacity-[0.6]" style={{ backgroundImage: "linear-gradient(rgba(22,22,22,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(22,22,22,0.025) 1px, transparent 1px)", backgroundSize: "36px 36px" }} />
             <div className="pointer-events-none absolute left-1/2 top-1/3 h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0056F9]/10 blur-[120px]" />
             <div className="pointer-events-none absolute left-[58%] top-1/2 h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6D4AFF]/8 blur-[140px]" />
-            <div className="relative px-3 py-6 md:px-5 md:py-8">
+            <div className="relative px-1 py-5 sm:px-3 md:px-5 md:py-8">
               <PremiumHeroDiagram variant="light" />
             </div>
           </div>

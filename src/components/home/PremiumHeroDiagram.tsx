@@ -54,11 +54,27 @@ export function PremiumHeroDiagram({
   const cx = 550;
   const cy = 215;
   const shield = 62;
-  const mobileWidth = 340;
-  const mobileHeight = 520;
-  const mobileCx = 170;
-  const mobileCy = 208;
-  const mobileShield = 50;
+  const mobileWidth = 380;
+  const mobileHeight = 500;
+  const mobileCx = 190;
+  const mobileCy = 202;
+  const mobileShield = 44;
+  const mobileRows = {
+    top: 90,
+    upper: 150,
+    middle: 210,
+    lower: 270,
+    bottom: 416,
+  };
+  const mobileColumns = {
+    outerLeft: 68,
+    innerLeft: 68,
+    outerRight: 312,
+    innerRight: 312,
+    bottomLeft: 86,
+    bottomCenter: 190,
+    bottomRight: 294,
+  };
 
   const leftNodes = [
     { Icon: Users,        label: "Employee AI Use",   x: 60,  y: 50  },
@@ -110,38 +126,38 @@ export function PremiumHeroDiagram({
   ];
   const blockedYOffsets = [-55, -20, 18, 48];
   const mobileLeftNodes = [
-    { Icon: Users, label: "Employee AI", x: 54, y: 92 },
-    { Icon: MessageSquare, label: "Customer chat", x: 100, y: 150 },
-    { Icon: Bot, label: "Internal copilot", x: 54, y: 208 },
-    { Icon: Workflow, label: "Agent flow", x: 100, y: 266 },
+    { Icon: Users, label: "Employee AI", x: mobileColumns.outerLeft, y: mobileRows.top },
+    { Icon: MessageSquare, label: "Customer chat", x: mobileColumns.innerLeft, y: mobileRows.upper },
+    { Icon: Bot, label: "Copilot", x: mobileColumns.outerLeft, y: mobileRows.middle },
+    { Icon: Workflow, label: "Agent flow", x: mobileColumns.innerLeft, y: mobileRows.lower },
   ];
   const mobileRightNodes = [
-    { Icon: BrainCircuit, label: "Model output", x: 286, y: 92 },
-    { Icon: Wrench, label: "Tool calls", x: 240, y: 150 },
-    { Icon: Globe, label: "API calls", x: 286, y: 208 },
-    { Icon: Eye, label: "Data access", x: 240, y: 266 },
+    { Icon: BrainCircuit, label: "Model output", x: mobileColumns.outerRight, y: mobileRows.top },
+    { Icon: Wrench, label: "Tool calls", x: mobileColumns.innerRight, y: mobileRows.upper },
+    { Icon: Globe, label: "API calls", x: mobileColumns.outerRight, y: mobileRows.middle },
+    { Icon: Eye, label: "Data access", x: mobileColumns.innerRight, y: mobileRows.lower },
   ];
   const mobileBottomNodes = [
-    { Icon: FileCheck2, label: "Audit", x: 86, y: 410 },
-    { Icon: LayoutDashboard, label: "Monitor", x: 170, y: 446 },
-    { Icon: Eye, label: "Evidence", x: 254, y: 410 },
+    { Icon: FileCheck2, label: "Audit", x: mobileColumns.bottomLeft, y: mobileRows.bottom },
+    { Icon: LayoutDashboard, label: "Monitor", x: mobileColumns.bottomCenter, y: mobileRows.bottom },
+    { Icon: Eye, label: "Evidence", x: mobileColumns.bottomRight, y: mobileRows.bottom },
   ];
   const mobileLeftPaths = mobileLeftNodes.map(
     (node, index) =>
-      `M ${node.x},${node.y} C ${node.x + 54},${node.y} ${mobileCx - 78},${mobileCy + (index - 1.5) * 18} ${mobileCx - mobileShield},${mobileCy}`,
+      `M ${node.x},${node.y} C ${node.x + 72},${node.y} ${mobileCx - 92},${mobileCy + (index - 1.5) * 16} ${mobileCx - mobileShield},${mobileCy}`,
   );
   const mobileRightPaths = mobileRightNodes.map(
     (node, index) =>
-      `M ${mobileCx + mobileShield},${mobileCy} C ${mobileCx + 78},${mobileCy + (index - 1.5) * 18} ${node.x - 54},${node.y} ${node.x},${node.y}`,
+      `M ${mobileCx + mobileShield},${mobileCy} C ${mobileCx + 92},${mobileCy + (index - 1.5) * 16} ${node.x - 72},${node.y} ${node.x},${node.y}`,
   );
   const mobileBottomPaths = mobileBottomNodes.map(
     (node) =>
-      `M ${mobileCx},${mobileCy + mobileShield} C ${mobileCx},${mobileCy + 120} ${node.x},${node.y - 72} ${node.x},${node.y}`,
+      `M ${mobileCx},${mobileCy + mobileShield} C ${mobileCx},${mobileCy + 106} ${node.x},${node.y - 66} ${node.x},${node.y}`,
   );
   const mobileFullPaths = mobileLeftNodes.map((leftNode, index) => {
     const rightNode = mobileRightNodes[index];
 
-    return `M ${leftNode.x},${leftNode.y} C ${leftNode.x + 54},${leftNode.y} ${mobileCx - 78},${mobileCy + (index - 1.5) * 18} ${mobileCx},${mobileCy} C ${mobileCx + 78},${mobileCy + (index - 1.5) * 18} ${rightNode.x - 54},${rightNode.y} ${rightNode.x},${rightNode.y}`;
+    return `M ${leftNode.x},${leftNode.y} C ${leftNode.x + 72},${leftNode.y} ${mobileCx - 92},${mobileCy + (index - 1.5) * 16} ${mobileCx},${mobileCy} C ${mobileCx + 92},${mobileCy + (index - 1.5) * 16} ${rightNode.x - 72},${rightNode.y} ${rightNode.x},${rightNode.y}`;
   });
 
   return (
@@ -491,8 +507,12 @@ export function PremiumHeroDiagram({
 
       <div className={isCompact ? "block" : "md:hidden"}>
         <div
-          className={isCompact ? "relative mx-auto w-full" : "relative mx-auto w-full max-w-[340px]"}
-          style={isCompact ? { aspectRatio: `${mobileWidth} / ${mobileHeight}` } : { height: mobileHeight }}
+          className={
+            isCompact
+              ? "relative mx-auto w-full"
+              : "relative mx-auto w-full max-w-none"
+          }
+          style={{ aspectRatio: `${mobileWidth} / ${mobileHeight}` }}
         >
           <div className="pointer-events-none absolute left-1/2 top-[210px] h-[170px] w-[170px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0056F9]/18 blur-[70px]" />
           <div className="pointer-events-none absolute left-1/2 top-[208px] h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6D4AFF]/10 blur-[90px]" />
@@ -712,10 +732,10 @@ export function PremiumHeroDiagram({
               }}
             >
               <div className="flex w-[60px] flex-col items-center gap-1">
-                <div className={`flex h-12 w-12 items-center justify-center rounded-[16px] border ${nodeBorder} ${nodeBg} ${nodeShadow}`}>
-                  <node.Icon className={`h-[18px] w-[18px] ${nodeIconLeft}`} />
+                <div className={`flex h-9 w-9 items-center justify-center rounded-[12px] border ${nodeBorder} ${nodeBg} ${nodeShadow}`}>
+                  <node.Icon className={`h-[14px] w-[14px] ${nodeIconLeft}`} />
                 </div>
-                <span className={`text-center text-[9px] leading-[1.15] ${nodeLabel}`}>
+                <span className={`whitespace-nowrap text-center text-[7px] leading-[1.1] ${nodeLabel}`}>
                   {node.label}
                 </span>
               </div>
@@ -732,10 +752,10 @@ export function PremiumHeroDiagram({
               }}
             >
               <div className="flex w-[60px] flex-col items-center gap-1">
-                <div className={`flex h-12 w-12 items-center justify-center rounded-[16px] border ${nodeBorder} ${nodeBg} ${nodeShadowRight}`}>
-                  <node.Icon className={`h-[18px] w-[18px] ${nodeIconRight}`} />
+                <div className={`flex h-9 w-9 items-center justify-center rounded-[12px] border ${nodeBorder} ${nodeBg} ${nodeShadowRight}`}>
+                  <node.Icon className={`h-[14px] w-[14px] ${nodeIconRight}`} />
                 </div>
-                <span className={`text-center text-[9px] leading-[1.15] ${nodeLabel}`}>
+                <span className={`whitespace-nowrap text-center text-[7px] leading-[1.1] ${nodeLabel}`}>
                   {node.label}
                 </span>
               </div>
@@ -766,13 +786,13 @@ export function PremiumHeroDiagram({
             className="absolute z-20 -translate-x-1/2 -translate-y-1/2"
             style={{ left: "50%", top: `${(mobileCy / mobileHeight) * 100}%` }}
           >
-            <div className="relative flex h-[78px] w-[78px] items-center justify-center rounded-full bg-gradient-to-br from-[#0056F9] via-[#4B30C8] to-[#7C3AED] p-[2px] shadow-[0_18px_60px_rgba(0,86,249,0.32),0_0_90px_rgba(109,74,255,0.20)]">
+            <div className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full bg-gradient-to-br from-[#0056F9] via-[#4B30C8] to-[#7C3AED] p-[2px] shadow-[0_18px_60px_rgba(0,86,249,0.32),0_0_90px_rgba(109,74,255,0.20)]">
               <div className={`flex h-full w-full items-center justify-center rounded-full ${umaiInnerBg} p-2.5`}>
                 <Image
                   src="/assets/umailogo_white.png"
                   alt="UMAI"
-                  width={52}
-                  height={52}
+                  width={48}
+                  height={48}
                   className="h-full w-full object-contain"
                 />
               </div>
