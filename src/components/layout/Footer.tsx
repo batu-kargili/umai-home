@@ -19,7 +19,7 @@ const FOOTER_COLUMNS = [
       { label: "Quick Start",   href: "/docs#quickstart" },
       { label: "SDK Reference", href: "/docs#sdk-install" },
       { label: "API Reference", href: "/docs#api-auth" },
-      { label: "GitHub",        href: "https://github.com/duvarai" },
+      { label: "GitHub",        href: "https://github.com/umai" },
     ],
   },
   {
@@ -98,11 +98,11 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/30">
-            &copy; {new Date().getFullYear()} DuvarAI, Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} UMAI, Inc. All rights reserved.
           </p>
           <p className="text-xs text-white/30">
             Built on{" "}
-            <span className="text-island-cyan/70">DuvarAI Engine</span>
+            <span className="text-island-cyan/70">UMAI Engine</span>
           </p>
         </div>
       </Container>
