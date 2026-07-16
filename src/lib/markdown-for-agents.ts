@@ -34,22 +34,36 @@ function extractTagContent(html: string, tagName: string) {
     .trim();
 }
 
-function extractMetaDescription(html: string) {
-  const match = html.match(
-    /<meta\s+name=["']description["']\s+content=["']([\s\S]*?)["'][^>]*>/i,
-  );
-
-  if (!match) {
-    return "";
-  }
-
-  return match[1]
+function decodeHtmlText(value: string) {
+  return value
     .replace(/&amp;/g, "&")
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .trim();
+}
+
+function extractAttribute(tag: string, attributeName: string) {
+  const match = tag.match(
+    new RegExp(`\\b${attributeName}\\s*=\\s*(['"])([\\s\\S]*?)\\1`, "i"),
+  );
+
+  return match?.[2] ?? "";
+}
+
+function extractMetaDescription(html: string) {
+  const metaTags = html.match(/<meta\b[^>]*>/gi) ?? [];
+
+  for (const tag of metaTags) {
+    const name = extractAttribute(tag, "name");
+
+    if (name.toLowerCase() === "description") {
+      return decodeHtmlText(extractAttribute(tag, "content"));
+    }
+  }
+
+  return "";
 }
 
 function extractPrimaryContent(html: string) {

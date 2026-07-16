@@ -1,6 +1,48 @@
-import { CheckCircle2, CircleAlert } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, CheckCircle2, CircleAlert, Library } from "lucide-react";
 
 import { CodeBlock } from "./CodeBlock";
+import { POLICY_FRAMEWORKS, POLICY_LIBRARY_TOTAL } from "@/lib/policy-library-data";
+
+function PolicyLibraryCallout() {
+  return (
+    <div className="mt-8 overflow-hidden rounded-2xl border border-[#6aaeff]/25 bg-gradient-to-br from-[#0056F9]/15 via-[#0056F9]/8 to-transparent p-7">
+      <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div className="max-w-[34rem]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#6aaeff]/30 bg-[#0056F9]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6aaeff]">
+            <Library className="h-3.5 w-3.5" />
+            Policy Library
+          </div>
+          <h3 className="mt-4 text-xl font-semibold tracking-[-0.02em] text-white">
+            Start from a ready-made policy package
+          </h3>
+          <p className="mt-3 text-sm leading-7 text-white/60">
+            Skip authoring from scratch. UMAI ships {POLICY_LIBRARY_TOTAL} curated
+            runtime policies mapped to KVKK, GDPR, the EU AI Act, and the OWASP
+            LLM Top 10 — browse each framework and its policies in the library.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {POLICY_FRAMEWORKS.map((framework) => (
+              <span
+                key={framework.slug}
+                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-white/60"
+              >
+                {framework.name} · {framework.policies.length}
+              </span>
+            ))}
+          </div>
+        </div>
+        <Link
+          href="/docs/policy-library"
+          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#0056F9] px-5 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#0B5BEA]"
+        >
+          Our Policy Library
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </div>
+  );
+}
 
 function SectionHeading({
   eyebrow,
@@ -626,6 +668,8 @@ LDAP_ALLOWED_GROUPS=CN=UMAI-Operators,OU=Groups,DC=example,DC=com`}
           title="What is a policy?"
           body="A policy is the smallest rule unit in UMAI. Policies define what should be checked, in which phase it should be checked, how that decision should be made, and what action should be returned when the rule is triggered."
         />
+
+        <PolicyLibraryCallout />
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           <DefinitionCard

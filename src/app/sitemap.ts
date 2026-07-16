@@ -4,6 +4,7 @@ import { umaiFeatures } from "@/content/umai-features";
 import { umaiInnovations } from "@/content/umai-innovations";
 import { umaiSolutions } from "@/content/umai-solutions";
 import { BLOG_POSTS } from "@/lib/blog-data";
+import { POLICY_FRAMEWORKS } from "@/lib/policy-library-data";
 import { STATIC_SITEMAP_ROUTES, toAbsoluteUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -44,11 +45,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const policyLibraryEntries: MetadataRoute.Sitemap = [
+    {
+      url: toAbsoluteUrl("/docs/policy-library"),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    ...POLICY_FRAMEWORKS.map((framework) => ({
+      url: toAbsoluteUrl(`/docs/policy-library/${framework.slug}`),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
+  ];
+
   return [
     ...staticEntries,
     ...featureEntries,
     ...innovationEntries,
     ...solutionEntries,
     ...blogEntries,
+    ...policyLibraryEntries,
   ];
 }
