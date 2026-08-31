@@ -16,7 +16,7 @@ export default function TermsPage() {
     <div className="min-h-screen bg-[#040404] text-white">
       <header className="border-b border-white/10 bg-black/80">
         <Container className="flex h-20 items-center justify-between">
-          <SiteLogo />
+          <SiteLogo priority />
           <Link href="/" className="text-sm font-medium text-white/66 transition-colors hover:text-white">
             Back to home
           </Link>

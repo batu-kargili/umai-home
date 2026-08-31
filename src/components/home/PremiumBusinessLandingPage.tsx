@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 import { PremiumFaqSection } from "@/components/home/PremiumFaqSection";
 import { PremiumAuditLedgerEvidenceSection } from "@/components/home/PremiumAuditLedgerEvidenceSection";
 import { PremiumHeroSection } from "@/components/home/PremiumHeroSection";
-import { PremiumLocalizationSection } from "@/components/home/PremiumLocalizationSection";
 import { PremiumProductsSection } from "@/components/home/PremiumProductsSection";
 import { PremiumSolutionsSection } from "@/components/home/PremiumSolutionsSection";
 import { PremiumTrustFrameworkSection } from "@/components/home/PremiumTrustFrameworkSection";
@@ -40,14 +39,28 @@ export function PremiumBusinessLandingPage() {
         </div>
 
         <main>
+          {/* The hero is above the fold and always rendered. Everything below it
+              is wrapped in .umai-defer so the browser can skip layout and paint
+              until each section approaches the viewport. */}
           <PremiumHeroSection />
-          <PremiumLocalizationSection />
-          <PremiumSolutionsSection />
-          <PremiumProductsSection />
-          <PremiumAuditLedgerEvidenceSection />
-          <PremiumTrustFrameworkSection />
-          <PremiumWhySection />
-          <PremiumFaqSection />
+          <div className="umai-defer">
+            <PremiumSolutionsSection />
+          </div>
+          <div className="umai-defer">
+            <PremiumProductsSection />
+          </div>
+          <div className="umai-defer">
+            <PremiumAuditLedgerEvidenceSection />
+          </div>
+          <div className="umai-defer">
+            <PremiumTrustFrameworkSection />
+          </div>
+          <div className="umai-defer">
+            <PremiumWhySection />
+          </div>
+          <div className="umai-defer">
+            <PremiumFaqSection />
+          </div>
         </main>
 
         <footer className="border-t border-white/8 bg-black/40">

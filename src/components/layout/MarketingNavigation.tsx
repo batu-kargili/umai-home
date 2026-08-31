@@ -107,7 +107,7 @@ export function MarketingNavigation({
     <div>
       <Container>
         <nav className={`flex ${navHeightClassName} items-center justify-between gap-6`}>
-          <SiteLogo tone={isLight ? "dark" : "light"} />
+          <SiteLogo tone={isLight ? "dark" : "light"} priority />
 
           <div ref={desktopNavRef} className="hidden items-center gap-1 lg:flex">
             {MARKETING_NAV_ITEMS.map((item) => (

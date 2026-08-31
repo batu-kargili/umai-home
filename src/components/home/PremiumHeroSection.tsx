@@ -132,7 +132,7 @@ export function PremiumHeroSection() {
         <Container>
           <div className="overflow-hidden rounded-[8px] border border-[#e0e0e0] bg-white">
           <div className="flex umai-ticker">
-            {[...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS].map((item, index) => (
+            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, index) => (
               <Link
                 key={`${item.text}-${index}`}
                 href={item.href}

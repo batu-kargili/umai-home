@@ -2,3 +2,12 @@
 # https://opennext.js.org/cloudflare/caching#static-assets-caching
 /_next/static/*
   Cache-Control: public,max-age=31536000,immutable
+
+# Content-hashed by the optimizer query string; safe to cache hard.
+# Without this the Worker re-encodes on every request (~445ms measured).
+/_next/image
+  Cache-Control: public,max-age=2592000,immutable
+
+# Logos, screenshots and flags. Not content-hashed, so allow revalidation.
+/assets/*
+  Cache-Control: public,max-age=2592000,stale-while-revalidate=86400

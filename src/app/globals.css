@@ -119,6 +119,19 @@ body {
     50% { transform: translate(-50%, -50%) scale(1.03); opacity: 0.78; }
   }
 
+  /* Hero diagram: one scaling unit so the HTML node layer tracks the SVG viewBox
+     exactly at every width. --design-w is set per canvas (desktop / mobile). */
+  .umai-diagram {
+    container-type: inline-size;
+  }
+  .umai-diagram-layer {
+    --u: 1px;
+  }
+  @supports (width: 1cqw) {
+    .umai-diagram-layer {
+      --u: calc(100cqw / var(--design-w));
+    }
+  }
   .section-padding {
     padding-top: var(--space-section);
     padding-bottom: var(--space-section);
@@ -224,17 +237,137 @@ body {
 }
 
 /* ===== TICKER ANIMATION ===== */
+/* Two copies of the item list are rendered, so one full loop is -50%. */
 @keyframes umai-ticker {
   from { transform: translateX(0); }
-  to { transform: translateX(-33.333%); }
+  to { transform: translateX(-50%); }
 }
 
 .umai-ticker {
-  animation: umai-ticker 50s linear infinite;
+  animation: umai-ticker 33s linear infinite;
+  will-change: transform;
 }
 
 .umai-ticker:hover {
   animation-play-state: paused;
+}
+
+/* ===== OFFSCREEN SECTIONS =====
+   Skips layout/paint for below-the-fold sections until they scroll near the
+   viewport. contain-intrinsic-size keeps the scrollbar stable by reserving a
+   placeholder height, and `auto` lets the browser remember real sizes once
+   a section has been rendered once. */
+.umai-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+/* ===== HERO DIAGRAM MOTION =====
+   These replace SVG SMIL (<animate> / <animateMotion>), which drives every
+   frame on the main thread. CSS transform/opacity/offset-distance animations
+   are handled by the compositor and stay off the critical path. Elements carry
+   their resting state as SVG attributes, so reduced-motion users get a clean
+   static diagram. */
+@media (prefers-reduced-motion: no-preference) {
+  .umai-ring-pulse {
+    animation: umai-ring-pulse var(--umai-ring-dur) ease-in-out infinite;
+  }
+
+  @keyframes umai-ring-pulse {
+    0%, 100% { r: var(--umai-ring-r0); opacity: var(--umai-ring-o0); }
+    50%      { r: var(--umai-ring-r1); opacity: var(--umai-ring-o1); }
+  }
+
+  .umai-flow-dot {
+    offset-path: var(--umai-flow-path);
+    offset-rotate: 0deg;
+    animation:
+      umai-flow-move var(--umai-flow-dur) linear var(--umai-flow-delay, 0s) infinite,
+      var(--umai-flow-fade, umai-flow-fade) var(--umai-flow-dur) linear var(--umai-flow-delay, 0s) infinite;
+  }
+
+  @keyframes umai-flow-move {
+    from { offset-distance: 0%; }
+    to   { offset-distance: 100%; }
+  }
+
+  /* Matches SMIL values "0;0.52;0.85;0.52;0" keyTimes "0;0.06;0.5;0.94;1" */
+  @keyframes umai-flow-fade {
+    0%   { opacity: 0; }
+    6%   { opacity: 0.52; }
+    50%  { opacity: 0.85; }
+    94%  { opacity: 0.52; }
+    100% { opacity: 0; }
+  }
+
+  /* Matches "0;0.46;0.84;0.46;0" keyTimes "0;0.08;0.5;0.92;1" */
+  @keyframes umai-flow-fade-mobile {
+    0%   { opacity: 0; }
+    8%   { opacity: 0.46; }
+    50%  { opacity: 0.84; }
+    92%  { opacity: 0.46; }
+    100% { opacity: 0; }
+  }
+
+  /* Matches "0;0.6;0.8;0.6;0" keyTimes "0;0.1;0.5;0.9;1" */
+  @keyframes umai-flow-fade-bottom {
+    0%   { opacity: 0; }
+    10%  { opacity: 0.6; }
+    50%  { opacity: 0.8; }
+    90%  { opacity: 0.6; }
+    100% { opacity: 0; }
+  }
+
+  /* Blocked-event dot: travels in, then flares out at the shield.
+     Matches opacity "0;0.8;0.9;0" @ "0;0.08;0.84;1" and r "3.3;3.3;9;0" @ "0;0.82;0.93;1" */
+  .umai-blocked-dot {
+    offset-path: var(--umai-flow-path);
+    offset-rotate: 0deg;
+    animation:
+      umai-flow-move var(--umai-flow-dur) linear var(--umai-flow-delay, 0s) infinite,
+      umai-blocked-fade var(--umai-flow-dur) linear var(--umai-flow-delay, 0s) infinite,
+      umai-blocked-grow var(--umai-flow-dur) linear var(--umai-flow-delay, 0s) infinite;
+  }
+
+  @keyframes umai-blocked-fade {
+    0%   { opacity: 0; }
+    8%   { opacity: 0.8; }
+    84%  { opacity: 0.9; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes umai-blocked-grow {
+    0%   { r: 3.3px; }
+    82%  { r: 3.3px; }
+    93%  { r: 9px; }
+    100% { r: 0; }
+  }
+
+  /* Shield ripple. Matches r "0;0;0;18;28;28" @ "0;0.83;0.84;0.91;0.97;1"
+     and opacity "0;0;0;0.62;0.2;0" @ "0;0.83;0.84;0.90;0.96;1" */
+  .umai-blocked-ripple {
+    animation: umai-blocked-ripple var(--umai-flow-dur) linear var(--umai-flow-delay, 0s) infinite;
+  }
+
+  @keyframes umai-blocked-ripple {
+    0%,  83% { r: 0;    opacity: 0; }
+    84%      { r: 0;    opacity: 0; }
+    90%      {          opacity: 0.62; }
+    91%      { r: 18px; }
+    96%      {          opacity: 0.2; }
+    97%      { r: 28px; }
+    100%     { r: 28px; opacity: 0; }
+  }
+
+  /* BLOCKED / SAFE labels on the mobile diagram */
+  .umai-label-pulse {
+    animation: umai-label-pulse var(--umai-flow-dur) ease-in-out var(--umai-flow-delay, 0s) infinite;
+  }
+
+  @keyframes umai-label-pulse {
+    0%, 100% { opacity: var(--umai-label-o0); }
+    50%      { opacity: var(--umai-label-o1); }
+  }
 }
 
 /* ===== SCROLLBAR ===== */

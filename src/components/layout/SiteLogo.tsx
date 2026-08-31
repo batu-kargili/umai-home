@@ -5,19 +5,21 @@ interface SiteLogoProps {
   tone?: "light" | "dark";
   className?: string;
   sizes?: string;
+  priority?: boolean;
 }
 
 export function SiteLogo({
   tone = "light",
   className = "",
   sizes = "(min-width: 640px) 148px, 132px",
+  priority = false,
 }: SiteLogoProps) {
   const logo =
     tone === "dark"
       ? {
           src: "/assets/umailogo_dark.png",
-          width: 10034,
-          height: 2283,
+          width: 1200,
+          height: 273,
         }
       : {
           src: "/assets/umailogo_white.png",
@@ -34,6 +36,7 @@ export function SiteLogo({
         height={logo.height}
         className={`h-auto w-[132px] sm:w-[148px] ${className}`.trim()}
         sizes={sizes}
+        priority={priority}
         style={{ height: "auto" }}
       />
     </Link>
